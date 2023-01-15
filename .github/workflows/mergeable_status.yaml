@@ -23,7 +23,7 @@ jobs:
       - name: Check PR Status
         uses: lorrydriveloper/first-action@main
         id: prMergeableStatus
-      - if: success() && steps.prMergeableStatus.outputs.mergeableState == 'clean'
+      - if: success() && (steps.prMergeableStatus.outputs.mergeableState == 'clean' || steps.prMergeableStatus.outputs.mergeableState == 'unestable')
         uses: srvaroa/labeler@master
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
