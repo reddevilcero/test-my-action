@@ -1,0 +1,5 @@
+version: 1
+appendOnly: true
+labels:
+  - label: Ready for QA
+    title: '^*'

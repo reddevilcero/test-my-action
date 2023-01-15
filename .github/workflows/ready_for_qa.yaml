@@ -1,0 +1,16 @@
+name: Ready for QA
+
+on:
+  pull_request:
+    types: [labeled]
+
+jobs:
+  add-label-if-ready:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Assign to QA Team
+        uses: kentaro-m/auto-assign-action@v1.2.4
+        with:
+          issue_number: ${{github.event.pull_request.number}}
+          configuration-path: '.github/auto_assign_qa_team.yaml'
